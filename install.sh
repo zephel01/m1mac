@@ -1,9 +1,6 @@
 #!/bin/bash
 ### M1 Mac build 
 
-# change bash
-chsh -s /bin/bash
-
 echo "$SHELL"
 
 ## brew install arm64
@@ -12,34 +9,43 @@ arch -arm64e /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebr
 ## brew install x86_64
 arch -x86_64 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-## shellenv
-cat << 'EOF' >> ~/.bash_profile
-# shellenv
-eval "$(/opt/homebrew/bin/brew shellenv)"
-EOF
+cat ~/m1mac/.zshrc >> ~/.zshrc
 
 exec $SHELL -l
 
 brew install git
 
+## install anyenv
 git clone https://github.com/anyenv/anyenv ~/.anyenv
 
 ## export anyenv
-cat << 'EOF' >> ~/.bash_profile
+cat << 'EOF' >> ~/.zshrc
 # export anyenv
-export PATH="$HOME/.anyenv/bin:$PATH"
-eval "$(anyenv init - --no-rehash)"
+if [ -e "$HOME/.anyenv" ]
+then
+    export ANYENV_ROOT="$HOME/.anyenv"
+    export PATH="$ANYENV_ROOT/bin:$PATH"
+    if command -v anyenv 1>/dev/null 2>&1
+    then
+        eval "$(anyenv init -)"
+    fi
+fi
 EOF
 
-~/.anyenv/bin/anyenv init
 exec $SHELL -l
 anyenv install --init
+
+## install anyenv plugins
+mkdir -p $(anyenv root)/plugins
+git clone https://github.com/znz/anyenv-update.git $(anyenv root)/plugins/anyenv-update
+
+anyenv update
 
 ## install pyenv
 anyenv install pyenv
 
 ## export pyenv
-cat << 'EOF' >> ~/.bash_profile
+cat << 'EOF' >> ~/.zshrc
 # export pyenv
 export PYENV_ROOT="$HOME/.anyenv/envs/pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
