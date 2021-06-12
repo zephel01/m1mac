@@ -6,8 +6,11 @@ chsh -s /bin/bash
 
 echo "$SHELL"
 
-## brew install
+## brew install arm64
 arch -arm64e /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+
+## brew install x86_64
+arch -x86_64 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 ## shellenv
 cat << 'EOF' >> ~/.bash_profile
@@ -16,9 +19,6 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 EOF
 
 exec $SHELL -l
-
-## check brew version
-brew --version
 
 brew install git
 
