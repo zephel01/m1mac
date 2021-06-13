@@ -45,14 +45,17 @@ anyenv update
 anyenv install pyenv
 
 ## export pyenv
-cat << 'EOF' >> ~/.zshrc
+cat << 'EOF' >> ~/.zprofile
 # export pyenv
 export PYENV_ROOT="$HOME/.anyenv/envs/pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init - zsh)"
-fi
+  eval "$(pyenv init -)"
+EOF
+
+cat << 'EOF' >> ~/.zshrc
+# export pyenv
+eval "$(pyenv init -)"
 EOF
 
 exec $SHELL -l
