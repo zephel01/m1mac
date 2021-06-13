@@ -1,10 +1,16 @@
 #!/bin/bash
 
-## byobu
-brew install byobu
+## awscli
+brew install awscli
+
+## checksum
+brew install md5sha1sum
 
 ## terminal
 brew install iterm2
+
+## byobu
+brew install byobu
 
 ## editor
 brew install vim
@@ -26,9 +32,6 @@ brew install p7zip
 
 # drawing tool
 brew install skitch
-
-# binary editor
-brew cask install 0xed
 
 # video player
 brew install vlc
