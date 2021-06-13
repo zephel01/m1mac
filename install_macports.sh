@@ -1,17 +1,16 @@
 #!/bin/bash
 
-mkdir -p /opt/mports
+curl -O https://distfiles.macports.org/MacPorts/MacPorts-2.7.1.tar.bz2
+tar xf MacPorts-2.7.1.tar.bz2
 
-cd /opt/mports
-git clone https://github.com/macports/macports-base.git
-
-cd macports-base
-git checkout v2.7.1  # skip this if you want to use the development version
-
-cd /opt/mports/macports-base
-./configure --enable-readline
+cd MacPorts-2.7.1/
+./configure
 make
 sudo make install
-make distclean
 
-echo "export PATH=/opt/local/bin:/opt/local/sbin:$PATH" >> ~/.profile
+## export macports
+cat << 'EOF' >> ~/.profile
+# export macports
+export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+export MANPATH="/opt/local/man:$MANPATH"
+EOF
