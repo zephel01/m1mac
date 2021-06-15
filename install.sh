@@ -13,7 +13,7 @@ cat ~/m1mac/.zshrc >> ~/.zshrc
 
 exec $SHELL -l
 
-brew install git
+=brew install git
 
 ## install anyenv
 git clone https://github.com/anyenv/anyenv ~/.anyenv
@@ -59,8 +59,8 @@ EOF
 
 exec $SHELL -l
 
-pyenv install 3.6.10
-pyenv global 3.6.10
+arch -arch x86_64 env PATH=${PATH/\/opt\/homebrew\/bin:/} pyenv install 3.8.7
+pyenv global 3.8.7
 
 pyenv rehash
 
