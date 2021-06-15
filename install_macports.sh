@@ -9,7 +9,7 @@ make
 sudo make install
 
 ## export macports
-cat << 'EOF' >> ~/.profile
+cat << 'EOF' >> ~/.zshrc
 # export macports
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 export MANPATH="/opt/local/man:$MANPATH"
