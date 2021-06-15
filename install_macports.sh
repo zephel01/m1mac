@@ -15,6 +15,6 @@ export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 export MANPATH="/opt/local/man:$MANPATH"
 EOF
 
-source ~/.profile
+exec $SHELL -l
 
 sudo port selfupdate
