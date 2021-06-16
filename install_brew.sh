@@ -35,7 +35,7 @@ echo "export BYOBU_PREFIX=/opt/homebrew" >> .zshrc
 =brew install skitch
 
 # video player
-brew install vlc
+=brew install vlc
 
 # Chat soft
 =brew install slack
