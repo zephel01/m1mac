@@ -1,5 +1,11 @@
 #!/bin/bash
 
+## zsh
+brew install zsh
+
+## zsh-completions 
+brew install zsh-completions
+
 ## awscli
 =brew install awscli
 
