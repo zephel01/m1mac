@@ -79,7 +79,7 @@ PROMPT='
 [%B%F{red}%n@%m%f%b:%F{green}%~%f]%F{cyan}$vcs_info_msg_0_%f
 %F{yellow}$%f '
 
-# export gopath
+# export path
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$PATH
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
